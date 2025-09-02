@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force Urbanist font globally */
+* {
+  font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+@layer base {
+  :root {
+    --background: 240 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 222 89% 55%;
+    --primary-rgb: 37, 99, 235;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 262 100% 67%;
+    --accent-rgb: 147, 51, 234;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222 89% 55%;
+    --chart-1: 222 89% 55%;
+    --chart-2: 262 100% 67%;
+    --chart-3: 187 92% 69%;
+    --chart-4: 332 100% 65%;
+    --chart-5: 43 96% 58%;
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-rgb: 59, 130, 246;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 19% 27%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 19% 27%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 264 96% 70%;
+    --accent-rgb: 167, 139, 250;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 60.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 19% 27%;
+    --input: 217 19% 27%;
+    --ring: 224.3 76.3% 48%;
+    --chart-1: 217 91% 60%;
+    --chart-2: 264 96% 70%;
+    --chart-3: 187 92% 69%;
+    --chart-4: 332 100% 65%;
+    --chart-5: 43 96% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  }
+  
+  html {
+    font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  }
+  
+  input, textarea, select, button, label, span, p, div, a {
+    font-family: 'Urbanist', system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 0.1s;
+  }
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+  }
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+  }
+}
+
+.animate-wave {
+  animation: wave 1.2s linear infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.5);
+  }
+}
+
+@layer components {
+  .bg-card {
+    @apply bg-background dark:bg-background/50;
+  }
+
+  /* Glass morphism effects */
+  .glass {
+    @apply backdrop-blur-xl bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10;
+  }
+  
+  .glass-card {
+    @apply glass rounded-2xl shadow-xl transition-all duration-300;
+  }
+  
+  .glass-input {
+    @apply glass bg-white/5 dark:bg-black/5 focus:ring-2 ring-primary/20 border-white/10;
+  }
+
+  /* Animated gradient background */
+  .gradient-bg {
+    background: linear-gradient(-45deg, 
+      hsl(var(--primary)/0.7),
+      hsl(var(--accent)/0.7),
+      hsl(var(--chart-3)/0.7),
+      hsl(var(--chart-4)/0.7)
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  .gradient-text {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(to right, 
+      hsl(var(--primary)), 
+      hsl(var(--accent))
+    );
+    background-size: 200% auto;
+    animation: shine 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes shine {
+    from { background-position: 0 50%; }
+    to { background-position: 100% 50%; }
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+  
+  .hover-glow:hover {
+    @apply shadow-neon;
+  }
+  
+  /* Card styles */
+  .card-modern {
+    @apply relative rounded-2xl bg-white dark:bg-gray-800 p-6 shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .card-glass {
+    @apply glass-card p-6 hover:-translate-y-1 transition-all duration-300;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl shadow-md hover:shadow-lg transition-all;
+  }
+  
+  .btn-glass {
+    @apply glass px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5;
+  }
+  
+  .btn-gradient {
+    @apply gradient-bg text-white font-medium px-4 py-2 rounded-xl shadow-md hover:shadow-lg transition-all duration-300;
+  }
+  
+  /* Shimmer effect */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer::after {
+    @apply absolute top-0 -left-[100%] right-0 bottom-0 content-[''];
+    background: linear-gradient(to right, 
+      transparent 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      transparent 100%
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    to {
+      transform: translateX(200%);
+    }
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/20 rounded-full hover:bg-primary/30 transition-colors;
+  }
+  
+  /* Blob shapes */
+  .blob {
+    @apply absolute bg-primary/30 dark:bg-primary/20 rounded-full filter blur-3xl animate-morph;
+  }
+  
+  /* 3D card effect */
+  .card-3d {
+    @apply relative transform transition-all duration-300 ease-out;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .card-3d:hover {
+    transform: rotateY(10deg) rotateX(10deg);
+  }
+
+  /* Wave divider */
+  .wave-divider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .wave-divider::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    top: 0;
+    left: -50%;
+    background: radial-gradient(ellipse at center, transparent 0%, hsl(var(--background)) 70%);
+    animation: wave-animation 10s ease-in-out infinite;
+  }
+
+  @keyframes wave-animation {
+    0%, 100% {
+      transform: translateY(-10%) translateX(0) scaleY(1);
+    }
+    50% {
+      transform: translateY(-10%) translateX(-25%) scaleY(0.8);
+    }
+  }
+
+  /* Glow effects */
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.4);
+  }
+
+  .shadow-glow:hover {
+    box-shadow: 0 0 25px rgba(var(--primary-rgb), 0.6);
+  }
+
+  /* Animated morphing background */
+  @keyframes morph {
+    0% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+  }
+
+  .animate-morph {
+    animation: morph 15s ease-in-out infinite;
+  }
+
+  /* Modern button styles */
+  .btn-modern {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-medium transition-all duration-300;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
+  }
+
+  .btn-modern:hover {
+    background-position: right center;
+    box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+  }
+
+  .btn-modern::before {
+    content: "";
+    @apply absolute inset-0 rounded-xl;
+    background: linear-gradient(45deg, 
+      rgba(255, 255, 255, 0) 0%, 
+      rgba(255, 255, 255, 0.2) 50%, 
+      rgba(255, 255, 255, 0) 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .btn-modern:hover::before {
+    transform: translateX(100%);
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+}
