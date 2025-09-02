@@ -179,19 +179,19 @@ const LandingPage = () => {
 
                 <div className="flex space-x-6">
                   <Link
-                    to="https://www.instagram.com/adityaslyf?igsh=MWxubDE5cHM2eGR6NA=="
+                    to="https://www.instagram.com/abubakarsiddiquii?igsh=MWxubDE5cHM2eGR6NA=="
                     className="text-white/60 hover:text-white transition-colors"
                   >
                     <Instagram className="h-5 w-5" />
                   </Link>
                   <Link
-                    to="https://twitter.com/adityaslyf"
+                    to="https://twitter.com/sonofnasir"
                     className="text-white/60 hover:text-white transition-colors"
                   >
                     <Twitter className="h-5 w-5" />
                   </Link>
                   <a
-                    href="mailto:aditya.varshneymail@gmail.com"
+                    href="mailto:abubakarsiddqiui537@gmail.com"
                     className="text-white/60 hover:text-white transition-colors"
                   >
                     <Mail className="h-5 w-5" />
